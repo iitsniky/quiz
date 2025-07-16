@@ -26,19 +26,20 @@ public class Main {
             }
 
             if (userChoice == 1) {
-                mathQuiz(scanner);
+                Quiz.mathQuiz(scanner);
             }
             if (userChoice == 2) {
-                geographyQuiz(scanner);
+                Quiz.geographyQuiz(scanner);
             }
             if (userChoice == 0) {
                 break;
             }
         }
-
-
-
     }
+
+}
+
+class Quiz {
     public static void geographyQuiz(Scanner scanner) {
         System.out.println("----------------------------------");
         System.out.println("You have chosen: Geography.");
@@ -46,17 +47,17 @@ public class Main {
         System.out.println("==================================");
         char a, b, c;
         int score = 0;
-        if (askQuestion(scanner, "What is the capital of France? \n a) Madrid\n b) Paris\n c) Rome (Question with a single answer)", "b")) {
+        if (Question.askQuestion(scanner, "What is the capital of France? \n a) Madrid\n b) Paris\n c) Rome (Question with a single answer)", "b")) {
             score++;
         }
-        if (askQuestion(scanner, "Which continent is Brazil located on? \n a) Asia\n b) South America\n c) Africa (Question with a single answer)", "b")) {
+        if (Question.askQuestion(scanner, "Which continent is Brazil located on? \n a) Asia\n b) South America\n c) Africa (Question with a single answer)", "b")) {
             score++;
         }
-        if (askQuestion(scanner, "Which ocean is the largest? \n a) Atlantic Ocean\n b) Indian Ocean\n c) Pacific (Question with a single answer)", "c")) {
+        if (Question.askQuestion(scanner, "Which ocean is the largest? \n a) Atlantic Ocean\n b) Indian Ocean\n c) Pacific (Question with a single answer)", "c")) {
             score++;
         }
 
-        showResults(score);
+        Results.showResults(score);
     }
     public static void mathQuiz(Scanner scanner){
         System.out.println("----------------------------------");
@@ -65,19 +66,22 @@ public class Main {
         System.out.println("==================================");
         char a, b, c;
         int score = 0;
-        if (askQuestion(scanner, "What is 2 + 2\n a) 5\n b) 4\n c) 6 (Question with a single answer)", "b")) {
+        if (Question.askQuestion(scanner, "What is 2 + 2\n a) 5\n b) 4\n c) 6 (Question with a single answer)", "b")) {
             score++;
         }
-        if (askQuestion(scanner, "What is 2 + 5 \n a)7\n b) 12\n c) 8 (Question with a single answer)", "a")) {
+        if (Question.askQuestion(scanner, "What is 2 + 5 \n a)7\n b) 12\n c) 8 (Question with a single answer)", "a")) {
             score++;
         }
-        if (askQuestion(scanner, "4 = ?\n a) 2^2\n b) -2^2\n c) 1+3 (Question with multiple answers)", "ac")) {
+        if (Question.askQuestion(scanner, "4 = ?\n a) 2^2\n b) -2^2\n c) 1+3 (Question with multiple answers)", "ac")) {
             score++;
         }
-        showResults(score);
+        Results.showResults(score);
 
 
     }
+}
+
+class Question {
     public static boolean askQuestion(Scanner scanner, String question, String correctAnswer) {
         System.out.println(question);
 
@@ -119,6 +123,9 @@ public class Main {
             return false;
         }
     }
+
+}
+class Results {
     public static void showResults(int score) {
         System.out.println("----------------------------------");
         System.out.println("Your score: " + score + "/3");
